@@ -1,0 +1,39 @@
+
+<div class="container color-dark">
+  <div class="col">
+    <p>Add a bucket list item</p>
+  </div>
+  <div class="col">
+      <p>Your bucket list ({{ itemCount }})</p>
+  </div>
+
+</div>
+
+<div class="container color-light" [@goals]="goals.length">
+    <div class="col">
+      <p class="sm">Use this form to add a new bucket list goal. What do you want to do with your life</p>
+    
+      <form>
+        <input type="text" class="txt" name="item" placeholder="Life goal..." [(ngModel)]="goalText">
+        <input type="submit" class="btn" [value]="btnText" (click)="addItem()">
+      </form>
+    </div>
+    <div class="col">
+        <p class="life-container" *ngFor="let goal of goals; let i = index" (click)="removeItem(i)">
+          {{ goal }}
+        </p>
+    </div>
+  
+  </div>
+
+  <!-- 
+
+Interpolation > one way binding from class to html {{ class_property }}
+Property binding > one way binding on property [property]="class_property"
+Two way data binding <> [(ngModel)] = "class_property" requires 
+app module and import app.module.ts :: import { FormsModule } from '@angular/forms';
+
+
+
+
+  -->
